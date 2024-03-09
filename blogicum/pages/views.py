@@ -11,13 +11,13 @@ class RulesPage(TemplateView):
     template_name = 'pages/rules.html'
 
 
-def PageNotFound(request, exception):
+def pagenotfound(request, exception):
     return render(request, 'pages/404.html', status=404)
 
 
-def ServerError(request):
+def servererror(request):
     return render(request, 'pages/500.html', status=500)
 
 
-def csrfError(request, reason=''):
+def csrferror(request, reason=''):
     return render(request, 'pages/403csrf.html', status=403)

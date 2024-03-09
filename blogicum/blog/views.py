@@ -62,7 +62,7 @@ class CommentMixin:
         success_url = reverse_lazy('blog:post_detail',
                                    kwargs={'pk': self.kwargs['pk']})
         return success_url
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['post'] = get_object_or_404(Post, pk=self.kwargs['pk'])
@@ -73,6 +73,7 @@ class CommentMixin:
 
 class IndexView(ListView):
     """Отображает главную страницу."""
+
     model = Post
     template_name = 'blog/index.html'
     paginate_by = PAGINATE_NUM
@@ -88,6 +89,7 @@ class IndexView(ListView):
 
 class CategoryPostsView(ListView):
     """Отображает страницу категорий."""
+
     model = Post
     template_name = 'blog/category.html'
     context_object_name = 'post_list'
@@ -151,6 +153,7 @@ class PostDeleteView(LoginRequiredMixin, PostDispatchMixin, DeleteView):
 
 
 class ProfileDetailView(ProfileMixin, DetailView):
+
     """Страница профиля пользователя."""
     template_name = 'blog/profile.html'
 
@@ -173,6 +176,7 @@ class ProfileDetailView(ProfileMixin, DetailView):
 
 class ProfileUpdateView(LoginRequiredMixin, ProfileMixin, UpdateView):
     """Страница обновления информации в профиле у пользователя."""
+
     template_name = 'blog/user.html'
     fields = ('username', 'first_name', 'last_name', 'email',)
 
