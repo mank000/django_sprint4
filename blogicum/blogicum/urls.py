@@ -9,8 +9,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 app_name = 'blogicum'
-handler404 = 'pages.views.PageNotFound'
-handler500 = 'pages.views.ServerError'
+handler404 = 'pages.views.pagenotfound'
+handler500 = 'pages.views.servererror'
 
 urlpatterns = [
     path('', include('blog.urls', namespace='blog')),
