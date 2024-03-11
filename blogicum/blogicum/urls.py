@@ -13,8 +13,12 @@ handler404 = 'pages.views.pagenotfound'
 handler500 = 'pages.views.servererror'
 
 urlpatterns = [
-    path('', include('blog.urls', namespace='blog')),
-    path('auth/', include('django.contrib.auth.urls')),
+    path('',
+         include('blog.urls',
+                 namespace='blog')),
+    path('auth/',
+         include('django.contrib.auth.urls')
+         ),
     path(
         'auth/registration/',
         CreateView.as_view(
@@ -25,7 +29,7 @@ urlpatterns = [
         name='registration',
     ),
     path('auth/logout/', CreateView.as_view(
-        template_name='registration/logget_out.html',
+        template_name='registration/logged_out.html',
         form_class=UserCreationForm,
         success_url=reverse_lazy('blog:index')),
         name='logout',

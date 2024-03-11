@@ -1,6 +1,5 @@
 from django.conf.urls.static import static
 from django.conf import settings
-
 from django.urls import path, include
 
 from . import views
@@ -26,7 +25,7 @@ url_profile = [
 ]
 
 url_post = [
-    path('<int:pk>/',
+    path('<int:post_id>/',
          views.PostDetailView.as_view(),
          name='post_detail'
          ),
@@ -34,23 +33,23 @@ url_post = [
          views.PostCreateView.as_view(),
          name='create_post'
          ),
-    path('<int:pk>/edit/',
+    path('<int:post_id>/edit/',
          views.EditPostView.as_view(),
          name='edit_post'
          ),
-    path('<int:pk>/comment/',
+    path('<int:post_id>/comment/',
          views.CommentAddCreateView.as_view(),
          name='add_comment'
          ),
-    path('<int:pk>/delete/',
+    path('<int:post_id>/delete/',
          views.PostDeleteView.as_view(),
          name='delete_post'
          ),
-    path('<int:pk>/edit_comment/<int:comment_id>/',
+    path('<int:post_id>/edit_comment/<int:comment_id>/',
          views.EditCommentView.as_view(),
          name='edit_comment'
          ),
-    path('<int:pk>/delete_comment/<int:comment_id>/',
+    path('<int:post_id>/delete_comment/<int:comment_id>/',
          views.DeleteCommentView.as_view(),
          name='delete_comment'
          ),
@@ -69,5 +68,5 @@ urlpatterns = [
          ),
     path('category/',
          include(url_category)
-         )
+         ),
 ]
