@@ -1,6 +1,6 @@
 import datetime as dt
 
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views.generic import (
@@ -20,8 +20,7 @@ from .mixins import (
     PostDispatchMixin,
     ProfileMixin,
     CommentMixin,
-    CommentEditDeletePermission
-    )
+    CommentEditDeletePermission)
 
 User = get_user_model()
 PAGINATE_NUM = 10
@@ -46,7 +45,8 @@ class IndexView(ListView):
 
     def get_context_data(self, **kwargs):
         context = {
-            'page_obj': get_paginated_data(get_post_info().order_by('-pub_date').annotate(
+            'page_obj': get_paginated_data(get_post_info().order_by(
+                '-pub_date').annotate(
                 comment_count=Count('comments')), self.request)
         }
         return context
